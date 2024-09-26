@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aliakbar Nateghi - Engineer & Creator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@300;600&display=swap"
+          rel="stylesheet">
+    <style>
+
+        :root {
+            --bg-color: #FFF9C4; /* Noon Background */
+            --text-color: #3E2723; /* Noon Text */
+            --highlight-color: #FFB74D; /* Noon Highlight */
+            --hover-scale: 1.05; /* Universal hover scale */
+        }
+
+        /* Other styles remain unchanged */
+
+        h1:hover {
+            transform: scale(var(--hover-scale));
+            color: var(--highlight-color);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        p:hover {
+            transform: translateY(-3px);
+            color: var(--highlight-color);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(178, 223, 219, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--highlight-color);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.2);
+            color: var(--highlight-color);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        /* Optional: Add hover effects to section headings */
+        h2:hover {
+            color: var(--highlight-color);
+            transition: color 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: auto;
+            position: relative;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            animation: titleFadeIn 1.5s ease-out;
+        }
+
+        @keyframes titleFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+            animation: slideInText 1.5s ease-out;
+        }
+
+        @keyframes slideInText {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section {
+            margin: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: appearTags 2s ease-out forwards;
+        }
+
+        @keyframes appearTags {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tag {
+            background-color: var(--highlight-color);
+            color: var(--bg-color);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
+            animation: staggeredFade 0.5s ease forwards;
+        }
+
+        @keyframes staggeredFade {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tag:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .tag:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInSocial 1.5s ease-out;
+        }
+
+        @keyframes fadeInSocial {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: var(--text-color);
+            transition: color 0.3s ease, transform 0.3s ease;
+            animation: pulseSocialIcons 2s infinite ease-in-out;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) rotate(10deg);
+            color: var(--highlight-color);
+        }
+
+        @keyframes pulseSocialIcons {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.2);
+        }
+
+        /* Background pulse effect */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255, 183, 77, 0.5) 10%, transparent 30%);
+            opacity: 0.2;
+            animation: pulse 3s infinite;
+            border-radius: 20px;
+            z-index: 0;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+
+</head>
+<body>
+<i class="fas fa-adjust theme-toggle" title="Toggle Theme"></i>
+
+<div class="container">
+    <h1>Aliakbar Nateghi</h1>
+    <p>Engineer • Coder • Creator</p>
+
+    <div class="section">
+        <h2>About Me</h2>
+        <p>I'm a Tehran-based engineer, currently working at <a href="https://moneyro.app/"
+                                                                title="Moneyro"
+                                                                style="color: var(--highlight-color);">RUNC
+            INTERNATIONAL BANKING SOLUTIONS</a>.
+            I'm also pursuing my engineering studies at <a href="https://sharif.edu/"
+                                                           title="Apparently the best university in IRAN"
+                                                           style="color: var(--highlight-color);">Sharif University of
+                Technology</a>.</p>
+    </div>
+
+    <div class="section">
+        <h2>Tech Stack</h2>
+        <div class="tools">
+            <span class="tag">Data Structures</span>
+            <span class="tag">Algorithms</span>
+            <span class="tag">Back-End Development</span>
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Microservices Architecture</span>
+            <span class="tag">Object-Oriented Programming (OOP)</span>
+            <span class="tag">Event Driven Programming</span>
+            <span class="tag">SQL</span>
+            <span class="tag">NoSQL</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Docker Products</span>
+            <span class="tag">React.js</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Learning</h2>
+        <div class="tools">
+            <span class="tag">Physics</span>
+        </div>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.linkedin.com/in/aliakbarnateghi/" class="social-icon" title="LinkedIn"><i
+                class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/aliakbarnateghi" class="social-icon" title="GitHub"><i
+                class="fab fa-github"></i></a>
+        <a href="https://telegram.me/aliakbar_nateghi" class="social-icon" title="Telegram"><i
+                class="fab fa-telegram"></i></a>
+        <a href="https://instagram.com/alieowa" class="social-icon" title="Instagram"><i
+                class="fab fa-instagram"></i></a>
+    </div>
+</div>
+
+<script>
+    const themeToggle = document.querySelector('.theme-toggle');
+
+    // Function to apply the initial theme based on localStorage
+    function applyTheme() {
+        const isNightTheme = localStorage.getItem('nightTheme') === 'true';
+        if (isNightTheme) {
+            setNightTheme();
+        } else {
+            setNoonTheme();
+        }
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const isNightTheme = document.documentElement.style.getPropertyValue('--bg-color') === '#0D47A1';
+        if (isNightTheme) {
+            setNoonTheme();
+        } else {
+            setNightTheme();
+        }
+    });
+
+    function setNoonTheme() {
+        document.documentElement.style.setProperty('--bg-color', 'linear-gradient(to bottom right, #FFEDB2, #FFF9C4)'); /* Soft Gradient */
+        document.documentElement.style.setProperty('--text-color', '#3E2723'); /* Dark Olive Green */
+        document.documentElement.style.setProperty('--highlight-color', '#FFCA28'); /* Vibrant Yellow */
+        localStorage.setItem('nightTheme', 'false');
+    }
+
+
+    function setNightTheme() {
+        document.documentElement.style.setProperty('--bg-color', '#0D47A1'); /* Midnight Blue */
+        document.documentElement.style.setProperty('--text-color', '#E0F7FA'); /* Soft White */
+        document.documentElement.style.setProperty('--highlight-color', '#FFEB3B'); /* Golden Yellow */
+        localStorage.setItem('nightTheme', 'true');
+    }
+
+    // Apply the initial theme when the page loads
+    applyTheme();
+</script>
+</body>
+</html>
