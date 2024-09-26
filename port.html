@@ -7,51 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@300;600&display=swap"
           rel="stylesheet">
+    <link rel="icon" href="https://img.icons8.com/3d-fluency/94/biotech.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="https://img.icons8.com/3d-fluency/94/biotech.png" sizes="16x16" type="image/png">
+
     <style>
-
         :root {
-            --bg-color: #FFF9C4; /* Noon Background */
-            --text-color: #3E2723; /* Noon Text */
-            --highlight-color: #FFB74D; /* Noon Highlight */
-            --hover-scale: 1.05; /* Universal hover scale */
-        }
-
-        /* Other styles remain unchanged */
-
-        h1:hover {
-            transform: scale(var(--hover-scale));
-            color: var(--highlight-color);
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        p:hover {
-            transform: translateY(-3px);
-            color: var(--highlight-color);
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .tag:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(178, 223, 219, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .social-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-            color: var(--highlight-color);
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.2);
-            color: var(--highlight-color);
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        /* Optional: Add hover effects to section headings */
-        h2:hover {
-            color: var(--highlight-color);
-            transition: color 0.3s ease;
+            --bg-gradient: linear-gradient(135deg, #FFF9C4, #FFE0B2, #FFCCBC);
+            --text-color: #1A237E;
+            --highlight-gradient: linear-gradient(45deg, #FF7043, #FF5722);
+            --hover-scale: 1.05;
         }
 
         * {
@@ -62,227 +26,205 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--bg-color);
+            background: var(--bg-gradient);
             color: var(--text-color);
             line-height: 1.6;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: auto;
-            position: relative;
+            padding: 20px;
             transition: background 0.5s, color 0.5s;
         }
 
         .container {
             width: 100%;
             max-width: 800px;
-            padding: 3rem;
-            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
             text-align: center;
             position: relative;
             overflow: hidden;
-            animation: fadeIn 1.5s ease-out;
+            animation: fadeIn 1.5s ease-out, floatContainer 6s ease-in-out infinite;
         }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
+        @keyframes floatContainer {
+            0%, 100% {
                 transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
             }
         }
 
         h1 {
             font-family: 'Roboto Mono', monospace;
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-            animation: titleFadeIn 1.5s ease-out;
+            background: var(--highlight-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: colorShift 8s linear infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        @keyframes titleFadeIn {
+        @keyframes colorShift {
             0% {
-                opacity: 0;
-                transform: scale(0.8);
+                filter: hue-rotate(0deg);
             }
             100% {
-                opacity: 1;
-                transform: scale(1);
+                filter: hue-rotate(360deg);
             }
         }
 
         p {
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-            position: relative;
-            z-index: 1;
-            animation: slideInText 1.5s ease-out;
-        }
-
-        @keyframes slideInText {
-            0% {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: #37474F;
         }
 
         .section {
-            margin: 2rem 0;
-            position: relative;
-            z-index: 1;
+            margin: 1.5rem 0;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #1A237E;
+            margin-bottom: 0.5rem;
         }
 
         .tools {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.5rem;
             justify-content: center;
             margin-top: 1rem;
-            opacity: 0;
-            animation: appearTags 2s ease-out forwards;
-        }
-
-        @keyframes appearTags {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .tag {
-            background-color: var(--highlight-color);
-            color: var(--bg-color);
-            padding: 0.5rem 1rem;
+            background: var(--highlight-gradient);
+            color: #FFF;
+            padding: 0.3rem 0.8rem;
             border-radius: 25px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            z-index: 1;
-            animation: staggeredFade 0.5s ease forwards;
+            animation: popIn 0.5s ease-out backwards;
+            font-weight: 600;
         }
 
-        @keyframes staggeredFade {
-            0% {
+        @keyframes popIn {
+            from {
+                transform: scale(0);
                 opacity: 0;
-                transform: translateY(20px);
             }
-            100% {
+            to {
+                transform: scale(1);
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
-        .tag:nth-child(odd) {
-            animation-delay: 0.2s;
-        }
-
-        .tag:nth-child(even) {
-            animation-delay: 0.4s;
+        .tag:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
         }
 
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
-            position: relative;
-            z-index: 1;
-            animation: fadeInSocial 1.5s ease-out;
-        }
-
-        @keyframes fadeInSocial {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .social-icon {
-            font-size: 2rem;
-            color: var(--text-color);
+            font-size: 1.5rem;
+            color: #1A237E;
             transition: color 0.3s ease, transform 0.3s ease;
-            animation: pulseSocialIcons 2s infinite ease-in-out;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .social-icon:hover {
-            transform: translateY(-3px) rotate(10deg);
-            color: var(--highlight-color);
-        }
-
-        @keyframes pulseSocialIcons {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
+            color: #FF5722;
+            transform: scale(1.2);
         }
 
         .theme-toggle {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 10px;
+            right: 10px;
             cursor: pointer;
-            font-size: 2rem;
+            font-size: 1.5rem;
             transition: transform 0.3s ease;
-            z-index: 1;
+            animation: rotate 10s linear infinite;
+            color: #1A237E;
+            z-index: 10;
         }
 
-        .theme-toggle:hover {
-            transform: scale(1.2);
-        }
-
-        /* Background pulse effect */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle, rgba(255, 183, 77, 0.5) 10%, transparent 30%);
-            opacity: 0.2;
-            animation: pulse 3s infinite;
-            border-radius: 20px;
-            z-index: 0;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
             }
-            50% {
-                transform: scale(1.05);
+            to {
+                transform: rotate(360deg);
             }
-            100% {
-                transform: scale(1);
+        }
+
+        a {
+            color: #FF5722;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #FF7043;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .tag {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            .social-icon {
+                font-size: 1.2rem;
             }
         }
     </style>
-
 </head>
 <body>
 <i class="fas fa-adjust theme-toggle" title="Toggle Theme"></i>
@@ -293,14 +235,10 @@
 
     <div class="section">
         <h2>About Me</h2>
-        <p>I'm a Tehran-based engineer, currently working at <a href="https://moneyro.app/"
-                                                                title="Moneyro"
-                                                                style="color: var(--highlight-color);">RUNC
-            INTERNATIONAL BANKING SOLUTIONS</a>.
-            I'm also pursuing my engineering studies at <a href="https://sharif.edu/"
-                                                           title="Apparently the best university in IRAN"
-                                                           style="color: var(--highlight-color);">Sharif University of
-                Technology</a>.</p>
+        <p>I'm a Tehran-based engineer, currently working at <a href="https://moneyro.app/" title="Moneyro">RUNC
+            INTERNATIONAL BANKING SOLUTIONS</a>. I'm also pursuing my engineering studies at <a
+                href="https://sharif.edu/" title="Apparently the best university in IRAN">Sharif University of
+            Technology</a>.</p>
     </div>
 
     <div class="section">
@@ -308,18 +246,18 @@
         <div class="tools">
             <span class="tag">Data Structures</span>
             <span class="tag">Algorithms</span>
-            <span class="tag">Back-End Development</span>
-            <span class="tag">Python</span>
-            <span class="tag">Django</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Microservices Architecture</span>
             <span class="tag">Object-Oriented Programming (OOP)</span>
-            <span class="tag">Event Driven Programming</span>
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
             <span class="tag">SQL</span>
             <span class="tag">NoSQL</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Docker Products</span>
+            <span class="tag">Back-End Development</span>
+            <span class="tag">Django</span>
+            <span class="tag">FastAPI</span>
             <span class="tag">React.js</span>
+            <span class="tag">Microservices Architecture</span>
+            <span class="tag">Event Driven Programming</span>
+            <span class="tag">Docker Products</span>
         </div>
     </div>
 
@@ -345,7 +283,6 @@
 <script>
     const themeToggle = document.querySelector('.theme-toggle');
 
-    // Function to apply the initial theme based on localStorage
     function applyTheme() {
         const isNightTheme = localStorage.getItem('nightTheme') === 'true';
         if (isNightTheme) {
@@ -356,7 +293,7 @@
     }
 
     themeToggle.addEventListener('click', () => {
-        const isNightTheme = document.documentElement.style.getPropertyValue('--bg-color') === '#0D47A1';
+        const isNightTheme = document.documentElement.style.getPropertyValue('--bg-gradient').includes('#0D47A1');
         if (isNightTheme) {
             setNoonTheme();
         } else {
@@ -365,22 +302,36 @@
     });
 
     function setNoonTheme() {
-        document.documentElement.style.setProperty('--bg-color', 'linear-gradient(to bottom right, #FFEDB2, #FFF9C4)'); /* Soft Gradient */
-        document.documentElement.style.setProperty('--text-color', '#3E2723'); /* Dark Olive Green */
-        document.documentElement.style.setProperty('--highlight-color', '#FFCA28'); /* Vibrant Yellow */
+        document.documentElement.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #FFF9C4, #FFE0B2, #FFCCBC)');
+        document.documentElement.style.setProperty('--text-color', '#1A237E');
+        document.documentElement.style.setProperty('--highlight-gradient', 'linear-gradient(45deg, #FF7043, #FF5722)');
+        document.body.style.color = '#1A237E';
+        document.querySelectorAll('p').forEach(p => p.style.color = '#37474F');
+        document.querySelectorAll('h2').forEach(h => h.style.color = '#1A237E');
+        document.querySelectorAll('.social-icon').forEach(icon => icon.style.color = '#1A237E');
+        document.querySelector('.theme-toggle').style.color = '#1A237E';
         localStorage.setItem('nightTheme', 'false');
     }
 
-
     function setNightTheme() {
-        document.documentElement.style.setProperty('--bg-color', '#0D47A1'); /* Midnight Blue */
-        document.documentElement.style.setProperty('--text-color', '#E0F7FA'); /* Soft White */
-        document.documentElement.style.setProperty('--highlight-color', '#FFEB3B'); /* Golden Yellow */
+        document.documentElement.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #0D47A1, #1A237E, #283593)');
+        document.documentElement.style.setProperty('--text-color', '#E0F7FA');
+        document.documentElement.style.setProperty('--highlight-gradient', 'linear-gradient(45deg, #FFEB3B, #FFC107)');
+        document.body.style.color = '#E0F7FA';
+        document.querySelectorAll('p').forEach(p => p.style.color = '#B3E5FC');
+        document.querySelectorAll('h2').forEach(h => h.style.color = '#4FC3F7');
+        document.querySelectorAll('.social-icon').forEach(icon => icon.style.color = '#4FC3F7');
+        document.querySelector('.theme-toggle').style.color = '#4FC3F7';
         localStorage.setItem('nightTheme', 'true');
     }
 
-    // Apply the initial theme when the page loads
     applyTheme();
+
+    // Add staggered animation to tags
+    const tags = document.querySelectorAll('.tag');
+    tags.forEach((tag, index) => {
+        tag.style.animationDelay = `${index * 0.1}s`;
+    });
 </script>
 </body>
 </html>
